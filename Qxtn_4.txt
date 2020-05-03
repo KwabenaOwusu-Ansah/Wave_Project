@@ -1,0 +1,3 @@
+ SELECT COUNT(atx_id),when_created FROM agent_transactions
+  WHERE DATEPART(YEAR, when_created)=2018
+   GROUP BY DATEPART(MONTH, when_created);

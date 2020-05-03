@@ -1,0 +1,8 @@
+ SELECT agents.city, SUM(agent_transactions.amount)
+  AS atx_volume_city_summary
+  FROM agent_transactions
+LEFT JOIN agents ON agent_transactions.agent_id=agents.agent_id
+  GROUP BY city
+ WHERE TIMESTAMP BETWEEN DATE(NOW()) 
+     AND DATE_ADD(DATE (NOW()) , INTERVAL-7 DAY)
+    AND checkcollec='Yes'
